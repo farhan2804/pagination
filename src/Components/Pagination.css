@@ -1,0 +1,22 @@
+.FetchedContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+}
+
+img {
+  width: 300px;
+  height: 300px;
+}
+
+.paginationButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectedPage {
+  background-color: rgb(236, 17, 119);
+  color: whitesmoke;
+}
