@@ -1,22 +1,153 @@
-.FetchedContainer {
+/* Pagination.css */
+
+/* General Styling */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #1e1e1e;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Main Container for fetched data */
+.MainContainer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  flex-direction: column-reverse;
+  margin-top: 20px;
 }
 
-img {
-  width: 300px;
-  height: 300px;
+/* Fetched data card */
+.FetchedContainer {
+  background: #333;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 15px;
+  text-align: center;
+  width: calc(25% - 30px); /* Adjust for 4 items per row */
+  transition: transform 0.3s ease-in-out;
 }
 
+.FetchedContainer:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+}
+
+.FetchedContainer h3 {
+  color: #0ef;
+  font-size: 1.1rem;
+}
+
+.FetchedContainer img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Pagination Buttons */
 .paginationButtons {
   display: flex;
   justify-content: center;
-  align-items: center;
+  margin: 20px 0;
 }
 
-.selectedPage {
-  background-color: rgb(236, 17, 119);
-  color: whitesmoke;
+.paginationButtons button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  margin: 0 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+  outline: none;
+}
+
+.paginationButtons button:hover {
+  color: #0ef;
+}
+
+.paginationButtons button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Neon Glow Effect for Buttons */
+.paginationButtons button::before,
+.paginationButtons button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: rgba(0, 255, 255, 0.5);
+  transition: width 0.4s, height 0.4s, top 0.4s, left 0.4s;
+  z-index: -1;
+}
+
+.paginationButtons button:hover::before {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.paginationButtons button.selectedPage {
+  color: #0ef;
+}
+
+.paginationButtons button.selectedPage::after {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 255, 255, 0.2);
+}
+
+/* Neon Glowing Effect */
+.paginationButtons button::before {
+  border: 2px solid rgba(0, 255, 255, 0.7);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.7), 0 0 45px rgba(0, 255, 255, 0.4);
+  opacity: 0;
+  border-radius: 5px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.paginationButtons button:hover::before {
+  opacity: 1;
+}
+
+.paginationButtons button:hover {
+  box-shadow: 0 0 10px #0ef, 0 0 40px #0ef;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .FetchedContainer {
+    width: calc(33.33% - 30px); /* 3 items per row */
+  }
+}
+
+@media (max-width: 768px) {
+  .FetchedContainer {
+    width: calc(50% - 30px); /* 2 items per row */
+  }
+
+  .paginationButtons button {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .FetchedContainer {
+    width: calc(100% - 30px); /* 1 item per row */
+  }
+
+  .paginationButtons button {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
 }
